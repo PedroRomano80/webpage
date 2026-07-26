@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Home</title>
+</head>
+<body id="topo">
+    <header>
+        <nav>
+            <img src="{{ url_for('static', filename='img/Dark-Mode-Wolf-Logo-64px.png') }}" alt="Logótipo Pedro Romano Multimédia" align="left" class="logo logo-dark">
+            <img src="{{ url_for('static', filename='img/Lupus-Media-Logo-64px.png') }}" alt="Logótipo Pedro Romano Multimédia" align="left" class="logo logo-light">
+            <button><a href="{{ url_for('pagina_home') }}">Home</a></button>
+            <button><a href="{{ url_for('pagina_sobre') }}">Sobre Mim</a></button>
+            <div class="dropdown">
+                <button class="drobtn"><a href="{{ url_for('pagina_portfolio') }}">Portfólio</a></button>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('pagina_coder') }}">Coder</a>
+                    <a href="{{ url_for('pagina_designer') }}">Designer</a>
+                </div>
+            </div>
+            <button><a href="{{ url_for('pagina_contratar') }}">Hire me</a></button>
+            <div class="tema-toggle">
+                <span>☀️ Light</span>
+                    <label class="switch">
+                        <input type="checkbox" id="tema-switch" onchange="toggleTema()">
+                        <span class="slider"></span>
+                <span>🌙 Dark</span>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="span-col1">
+                <img src="{{ url_for('static', filename='img/Banner_Pattern.png') }}" alt="Banner Pattern" class="banner banner-pattern">
+                <img src="{{ url_for('static', filename='img/Banner_Pattern_Light.png') }}" alt="Banner Pattern Light" class="banner banner-pattern-light">
+                <h3>Sobre mim</h3>
+                <img src="{{ url_for('static',filename='img/profile-pic.png') }}" height="300" alt="Foto de Perfil de Pedro Romano">
+                <p class="contexto">
+                    "Sou <b>engenheiro de formação</b>, <b><u>gestor</u></b> por experiência <br>
+                    e atualmente estou a especializar-me em <b><u>técnico de multimédia</u></b>.<br>
+                    Reunindo competências <b>técnicas</b>, <b>criativas</b> <br>
+                    e <b>organizacionais</b> para contribuir em projetos de inovação."
+                </p>
+        </section>
+        <a href="#top" class="btn-topo"><img src="{{ url_for('static', filename='img/up-arrow.png') }}" alt="Seta para cima"></a>
+        <h3 class="titulo">Alguns dos meus projectos</h3>
+        <div class="carousel-container">
+            <!-- Image Track -->
+             <div class="carousel-track">
+                <div class="carousel-slide active">
+                    <img src="{{ url_for('static', filename='img/Exemplo_Codigo_HTML_1.png') }}" alt="Logótipo Dark Mode 400px">
+                </div>
+                <div class="carousel-slide">
+                    <img src="{{ url_for('static', filename='img/Exemplo_Pagina_Resumo_HTML.png') }}" alt="Logótipo Normal Mode 400px">
+                </div>
+                <div class="carousel-slide">
+                    <img src="{{ url_for('static', filename='img/Exemplo_Codigo_Python_parte1.png') }}" alt="Logótipo Transparent 400px">
+                </div>
+             </div>
+
+             <!-- Navigation Buttons -->
+             <button class="carousel-btn prev-btn" aria-label="Previous Slide">&#10094;</button>
+             <button class="carousel-btn next-btn" aria-label="Next Slide">&#10095;</button>
+        </div>
+        <span class="span-flex">
+            <section class="span-col">
+                <h3>Projecto 1 - Lupus Multimédia</h3>
+                <img src="{{ url_for('static', filename='img/Lupus-Media-Logo-150px.png') }}" alt="Lupus Multimédia Transparent Logo 150px">
+                <br>
+                <p>
+                    Neste projecto, foi-me pedido que desenhasse um logótipo para a minha marca.<br>
+                    Depois de desenhar à mão os esboços do logótipo, passei para o Affinity para criar o logótipo.<br> 
+                    Desenhei os vários tamanhos necessários para funcionar numa página web.
+                </p>
+            </section>
+            <section class="span-col">
+                <h3>Projecto 2 - Luminos</h3>
+                <img src="{{ url_for('static', filename='img/Luminos_150px_150px_Transparent_v2.png') }}" alt="Luminos Transparent Logo 150px">
+                <br>
+                <p>
+                    Neste projecto, foi-me pedido que desenhasse um logótipo para a minha marca.<br>
+                    Depois de desenhar à mão os esboços do logótipo, passei para o Affinity para criar o logótipo.<br> 
+                    Desenhei vários tamanhos necessários para funcionar numa página web.
+                </p>
+            </section>
+            <section class="span-col">
+                <h3>Projecto 3 - Code Canvas</h3>
+                <img src="{{ url_for('static', filename='img/Code_Canvas_Logo_150px_150px.png') }}" alt="Code Canvas Normal Logo 150px">
+                <br>
+                <p>
+                    Neste projecto, foi-me pedido que desenhasse um logótipo para a minha marca, mas com outra palete de cores.<br>
+                    Depois de desenhar à mão os esboços do logótipo, passei para o Affinity para criar o logótipo.<br>
+                    Desenhei vários tamanhos necessários para funcionar numa página web.
+                </p>
+            </section>
+        </span>
+        <div id="cookie-banner" class="cookie-banner">
+            <p>Este site usa cookies para melhorar a sua experiência e para estatísticas de utilização. Saiba mais na <a href="{{ url_for('pagina_privacidade') }}">Política de Privacidade</a> e na <a href="{{ url_for('pagina_cookies') }}">Política de Cookies</a>.</p>
+            <div class="cookie-banner-buttons">
+                <button id="cookie-decline" class="cookie-btn cookie-btn-decline">Recusar</button>
+                <button id="cookie-accept" class="cookie-btn cookie-btn-accept">Aceitar</button>
+            </div>
+        </div>
+        <script src="{{ url_for('static', filename='js/cookie-consent.js') }}"></script>
+    </main>
+    <footer class="footer-flex">
+        <div class="footer-col">
+            <h3>Redes Sociais</h3>
+            <a href="https://x.com/pedro_romano">
+                <img src="{{ url_for('static', filename='img/logo-white-32px.png') }}" alt="Logo da Twitter Branco" class="logo logo-dark">
+                <img src="{{ url_for('static', filename='img/x_logo_black.png') }}" alt="Logo da Twitter Preto" class="logo logo-light">
+            </a>
+            <a href="https://www.linkedin.com/in/pedro-romano-a51442211/"><img src="{{ url_for('static', filename='img/LI-In-Bug32px.png') }}" alt="Logo da Linkdin"></a>
+            <a href="mailto:pedromanromano@gmail.com"><img src="{{ url_for('static', filename='img/Gmail_Logo_32px.png') }}" alt="Logo do Gmail"></a>
+            <a href="https://www.instagram.com/pedroromano80/"><img src="{{ url_for('static', filename='img/Instagram_Glyph_Gradient_32px.png') }}" alt="Logo do Instagram"></a>
+            <a href="https://www.facebook.com/pedromanromano"><img src="{{ url_for('static', filename='img/Facebook_Logo_Primary_32px.png') }}" alt="Logo do Facebook"></a>
+        </div>
+
+        
+        <div class="footer-col">
+            <h3>Informação Legal</h3>
+            <a href="{{ url_for('pagina_privacidade') }}">Política de Privacidade</a><br>
+            <a href="{{ url_for('pagina_cookies') }}">Política de Cookies</a><br>
+            <a href="{{ url_for('pagina_tcondicoes') }}">Termos e Condições</a><br>
+        </div>
+
+        <div class="footer-col">
+            <h3>Links Principais</h3>
+            <a href="{{ url_for('pagina_sobre') }}">Sobre Mim</a><br>
+            <a href="{{ url_for('pagina_portfolio') }}">Portfólio</a><br>
+            <a href="{{ url_for('pagina_contratar') }}">Contrate-me</a><br>
+            <a href="{{ url_for('pagina_coder') }}">Coder</a><br>
+            <a href="{{ url_for('pagina_designer') }}">Designer</a><br>
+            <a href="{{ url_for('pagina_contactos') }}">Contactos</a><br>
+        </div>
+
+        <div class="footer-col">
+            <h3>Contactos</h3>
+            <p>Morada: Porto</p>
+            <p>Telemóvel: +351917492359</p>
+            <p>Email: pedromanromano@gmail.com</p>
+        </div>
+
+        <p>
+            &copy;<span id="ano"></span> Desenvolvido por Pedro Romano
+        </p>
+
+    </footer>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

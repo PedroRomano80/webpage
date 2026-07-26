@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Luminos</title>
+</head>
+    <header>
+        <nav>
+            <img src="{{ url_for('static', filename='img/Dark-Mode-Wolf-Logo-64px.png') }}" alt="Logótipo Pedro Romano Multimédia" align="left" class="logo logo-dark">
+            <img src="{{ url_for('static', filename='img/Lupus-Media-Logo-64px.png') }}" alt="Logótipo Pedro Romano Multimédia" align="left" class="logo logo-light">
+            <button><a href="{{ url_for('pagina_home') }}">Home</a></button>
+            <button><a href="{{ url_for('pagina_sobre') }}">Sobre Mim</a></button>
+            <div class="dropdown">
+                <button class="drobtn"><a href="{{ url_for('pagina_portfolio') }}">Portfolio</a></button>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('pagina_coder') }}">Coder</a>
+                    <a href="{{ url_for('pagina_designer') }}">Designer</a>
+                </div>
+            </div>
+            <button><a href="{{ url_for('pagina_contratar') }}">Hire Me</a></button>
+            <div class="tema-toggle">
+                <span>☀️ Light</span>
+                    <label class="switch">
+                        <input type="checkbox" id="tema-switch" onchange="toggleTema()">
+                        <span class="slider"></span>
+                    </label>
+                <span>🌙 Dark</span>
+            </div>
+        </nav>
+    </header>
+<body id="topo">
+    <main>
+        <a href="#top" class="btn-topo"><img src="{{ url_for('static', filename='img/up-arrow.png') }}" alt="Seta para cima"></a>
+        <section>
+            <h3>Projecto - Proposta de Redesign para uma marca</h3>
+                <h4>Fase 1 - Analisar o Briefing e Análise da Concorrência</h4>
+                <img src="{{ url_for('static', filename='img/Briefing.png') }}" alt="Briefing Fictício como exercício">
+                <img src="{{ url_for('static', filename='img/Fase 1 - Análise de Concorrência parte1.png') }}" alt="Fase 1 - Primeira Parte da Análise da Concorrência">
+                <img src="{{ url_for('static', filename='img/Fase 1 - Análise de Concorrência parte2.png') }}" alt="Fase 1  Segunda Parte da Análise da Concorrência">
+                <p>Nesta fase foi feita uma análise das principais empresas cujos produtos seriam directamente concorrentes com o produto que a Fluxo Labs pretende lançar. <br>
+                Foi feita uma análise aos pontos forte e pontos fracos desses mesmos produtos e foi desenvolvida uma estratégia para poder potenciar o produto da Fluxo Labs <br>
+                para ter vantagem sobre os concorrentes directos.</p>
+                <h4>Fase 2 - Inspiração e Desenvolvimento do Conceito</h4>
+                <img src="{{ url_for('static', filename='img/Fase 2 - Inspiração e Desenvolvimento do Conceito - Parte 1.png') }}" alt="Fase 2 - Primeira Parte da Inspiração e Desenvolvimento do Conceito">
+                <img src="{{ url_for('static', filename='img/Fase 2 - Inspiração e Desenvolvimento do Conceito - Parte 2.png') }}" alt="Fase 2 - Segunda Parte da Inspiração e Desenvolvimento do Conceito">
+                <img src="{{ url_for('static', filename='img/Fase 2 - Inspiração e Desenvolvimento do Conceito - Parte 3.png') }}" alt="Fase 2 - Terceira Parte da Inspiração e Desenvolvimento do Conceito">
+                <p>Nesta fase comecei a procurar inspiração para o rebranding pedido pela Fluxo Labs, seguindo as instruções dadas pelo documento do <i>briefing</i> e procurando mostrar possíveis caminhos <br>
+                para a marca, sem que esta perdesse a sua identidade.</p>
+                <h4>Fase 3 - Redesign da Identidade Visual</h4>
+                <a href="https://canva.link/puku5rx2gj6q3q4">Apresentação da Proposta de Rebranding da Fluxo Labs</a>
+                <img src="{{ url_for('static', filename='img/Fluxo_Labs_Brand_Board_Redesign_Proposal.png') }}" alt="Proposta de Redesign com BrandBoard desenvolvido por Pedro Romano">
+                <p>Nesta fase comecei por desenvolver um novo logótipo simplificado, em seguida escolhi uma paleta de cores que reflectisse a personalidade da marca, que se adquasse ao produto e também ao público-alvo.<br>
+                Posteriormente comecei o processo de escolha de tipografias primária, secundária e terciária que se adquassem à marca e transmitissem a sua identidade.</p>
+                <h4>Fase 4 - Desenvolvimento da EMBALAGEM do produto </h4>
+                <a href="https://canva.link/xbar576dszzh0fz">Apresentação da Análise e Planeamento</a>
+                <img src="{{ url_for('static', filename='img/Dieline_Fluxo_Labs_Product_Box.png') }}" alt="Dieline para a Caixa de Produto da Fluxo Labs">
+                <p>Nesta fase foi desenvolvida a dieline para a caixa de Produto da Fluxo Labs, como forma de mostrar como vai ficar a caixa para o produto a ser lançado.</p>
+                <h4>Fase 5 - Desenvolvimento de um  CARTAZ PROMOCIONAL para MUPIs digitais.</h4>
+                <img src="{{ url_for('static', filename='img/Poster.png') }}" alt="Cartaz Promocional para MUPIs digitais">
+                <p>Nesta fase foi desenvolvido um Cartaz Promocional para MUPIs digitais, para promover o novo produto a ser lançado pela Fluxo Labs.</p>
+                <h4>Fase 6 - Desenvolvimento de material de comunicação para Redes Sociais</h4>
+                <img src="{{ url_for('static', filename='img/Post_Apresentação_Produto_Instagram.png') }}" alt="Post Apresentação de Produto para Instagram">
+                <h5>Texto de Apoio Post 1</h5>
+                <p>No primeiro Post, é feita a apresentação do produto, neste caso o novo carregador sem-fios da Fluxo Labs, o FL650. <br>
+                    Trata-se de um carregador sem fios que pode carregar até 4 dispositivos em simultâneo e é compatível com a tecnologia MagSafe usada para carregar os dispositivos da Apple.
+                </p>
+                <h5>Hashtags</h5>
+                <p>#Minimalista, #CleanLook, #ChargeOnTheGo, #Sustentável</p>
+                <img src="{{ url_for('static', filename='img/Post_Apresentação_Produto_Instagram_2.png') }}" alt="Segundo Post de Produto para Instagram">
+                <h5>Texto de Apoio Post 2</h5>
+                <p>No segundo Post, são listadas as principais razões que levam o público-alvo a procurar este produto. <br>
+                Respondemos assim ao pedido feito no briefing pelo cliente e criamos um design e comunicação visual que vai de encontro aos princípios da Fluxo Labs <br>
+                e ao que eles encontraram como necessidade dos seus clientes.
+                </p>
+                <h5>Hashtags</h5>
+                <p>#Minimalista, #CleanLook, #ChargeOnTheGo, #Sustentável</p>
+                <h4>Fase 7 - Landing Page Desktop e Mobile</h4>
+                <h5>Landing Page Desktop</h5>
+                <img class="desktop" src="{{ url_for('static', filename='img/Fluxo_Labs_Landing_Page_Desktop.png') }}" alt=" Fluxo Labs Landing Page Desktop">
+                <h5>Landing Page Mobile</h5>
+                <img class="mobile" src="{{ url_for('static', filename='img/Fluxo_Labs_Landing_Page_Mobile.png') }}" alt="Fluxo Labs Landing Page Mobile">
+                <br>
+                <p>
+                    Neste projecto, foi-me pedido que elaborasse uma proposta de redesign de uma empresa exemplo.<br>
+                    Primeiro redesenhei o logótipo de acordo com o briefing recebido, mantendo a identidade da empresa,<br> 
+                    mas dando uma nova perspectiva, depois escolhi uma nova palete de cores, desenvolvi um padrão <br>
+                    que demonstra como a palete funciona em conjunto e por fim desenvolvi alguns mockups para mostrar <br>
+                    o novo logótipo na caixa do seu principal produto.
+                </p>
+        </section>
+        <div id="cookie-banner" class="cookie-banner">
+            <p>Este site usa cookies para melhorar a sua experiência e para estatísticas de utilização. Saiba mais na <a href="{{ url_for('pagina_privacidade') }}">Política de Privacidade</a> e na <a href="{{ url_for('pagina_cookies') }}">Política de Cookies</a>.</p>
+            <div class="cookie-banner-buttons">
+                <button id="cookie-decline" class="cookie-btn cookie-btn-decline">Recusar</button>
+                <button id="cookie-accept" class="cookie-btn cookie-btn-accept">Aceitar</button>
+            </div>
+        </div>
+        <script src="{{ url_for('static', filename='js/cookie-consent.js') }}"></script>
+    </main>
+    <footer class="footer-flex">
+        <div class="footer-col">
+            <h3>Redes Sociais</h3>
+            <a href="https://x.com/pedro_romano">
+                <img src="{{ url_for('static', filename='img/logo-white-32px.png') }}" alt="Logo da Twitter Branco" class="logo logo-dark">
+                <img src="{{ url_for('static', filename='img/x_logo_black.png') }}" alt="Logo da Twitter Preto" class="logo logo-light">
+            </a>
+            <a href="https://www.linkedin.com/in/pedro-romano-a51442211/"><img src="{{ url_for('static', filename='img/LI-In-Bug32px.png') }}" alt="Logo da Linkdin"></a>
+            <a href="mailto:pedromanromano@gmail.com"><img src="{{ url_for('static', filename='img/Gmail_Logo_32px.png') }}" alt="Logo do Gmail"></a>
+            <a href="https://www.instagram.com/pedroromano80/"><img src="{{ url_for('static', filename='img/Instagram_Glyph_Gradient_32px.png') }}" alt="Logo do Instagram"></a>
+            <a href="https://www.facebook.com/pedromanromano"><img src="{{ url_for('static', filename='img/Facebook_Logo_Primary_32px.png') }}" alt="Logo do Facebook"></a>
+        </div>
+
+        
+        <div class="footer-col">
+            <h3>Informação Legal</h3>
+            <a href="{{ url_for('pagina_privacidade') }}">Política de Privacidade</a><br>
+            <a href="{{ url_for('pagina_cookies') }}">Política de Cookies</a><br>
+            <a href="{{ url_for('pagina_tcondicoes') }}">Termos e Condições</a><br>
+        </div>
+
+        <div class="footer-col">
+            <h3>Links Principais</h3>
+            <a href="{{ url_for('pagina_sobre') }}">Sobre Mim</a><br>
+            <a href="{{ url_for('pagina_portfolio') }}">Portfólio</a><br>
+            <a href="{{ url_for('pagina_contratar') }}">Contrate-me</a><br>
+            <a href="{{ url_for('pagina_coder') }}">Coder</a><br>
+            <a href="{{ url_for('pagina_designer') }}">Designer</a><br>
+            <a href="{{ url_for('pagina_contactos') }}">Contactos</a><br>
+        </div>
+
+        <div class="footer-col">
+            <h3>Contactos</h3>
+            <p>Morada: Porto</p>
+            <p>Telemóvel: +351917492359</p>
+            <p>Email: pedromanromano@gmail.com</p>
+        </div>
+
+        <p>
+            &copy;<span id="ano"></span> Desenvolvido por Pedro Romano
+        </p>
+
+    </footer>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

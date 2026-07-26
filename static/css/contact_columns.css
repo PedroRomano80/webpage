@@ -1,0 +1,51 @@
+/* ---- Nova disposição da página de Contactos: colunas lado a lado ---- */
+
+.contact-columns{
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 600px;
+}
+
+.contact-info{
+    flex: 1 1 50%;
+    min-width: 300px;
+    position: relative;
+    background-image: url('../img/contact-bg1.png');
+    background-size: cover;
+    background-position: center;
+    background-color: #06283D;
+    color: white;
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.contact-info h1,
+.contact-info h2,
+.contact-info p{
+    color: white;
+}
+
+.contact-info .social-row{
+    justify-content: flex-start;
+    margin: 25px 0 0 0;
+}
+
+.contact-form-col{
+    flex: 1 1 50%;
+    min-width: 300px;
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    background-color: white;
+    color: #181818;
+}
+
+.contact-form-col h2{
+    text-align: left;
+    margin-bottom: 30px;
+}

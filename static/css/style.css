@@ -1,0 +1,845 @@
+/* =========================================
+   Definição Unificada e Aprimorada de Variáveis de Cor (Tema)
+   ========================================= */
+
+/* Tema Claro (Default / Padrão do Sistema) */
+:root {
+    --cor-fundo: #dff6ff;
+    --cor-texto: #181818;
+    --cor-link: #181818;       /* COR DE LINK COM CONSTRASTE TESTADO (AZUL PROFISSIONAL) */
+    --cor-link-hover: #1363DF; /* Um azul mais escuro para o hover */
+    --cor-link-regras: #181818; /* Cor escura para links dentro de .regras */
+}
+
+/* Tema Escuro (Detetado automaticamente pelo dispositivo) */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --cor-fundo: #181818;
+        --cor-texto: #DFF6FF;
+        --cor-link: #1363FF;       /* COR DE LINK CLARA COM BOM CONSTRASTE (AZUL CELESTE) */
+        --cor-link-hover: #06283D; /* Um azul mais escuro para o hover */
+        --cor-link-regras: #DFF6FF; /* Cor clara para links dentro de .regras */
+    }
+}
+
+/* =========================================
+   Regra Unificada para Links (a href)
+   ========================================= */
+a {
+    color: var(--cor-link); /* Usa a variável dinámica definida no início */
+    text-decoration: none;
+    transition: color 0.3s ease; /* Transição suave opcional */
+}
+
+html{
+    height: 100%;
+}
+
+/* Dark mode — predefinido */
+body{
+    font-family: Roboto, Helvetica, Martel_Sans, sans-serif;
+    background-color: #181818;
+    color: #DFF6FF;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Light mode — alternativo */
+body.light-mode {
+    background-color: #dff6ff;
+    color: #181818;
+}
+
+/* Contentor do toggle */
+.tema-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+/* Switch exterior */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 52px;
+    height: 26px;
+}
+
+/* Esconde o input original */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Barra deslizante */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #47B5FF;
+    border-radius: 26px;
+    transition: 0.3s;
+}
+
+/* Bolinha do slider */
+.slider::before {
+    content: "";
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+/* Quando está ativo (dark mode) */
+input:checked + .slider {
+    background-color: #181818;
+}
+
+input:checked + .slider::before {
+    transform: translateX(26px);
+}
+
+/* Dark mode — predefinido */
+header{
+    background-color: #181818;
+    color: #DFF6FF;
+    text-align: center;
+    max-height: 400px;
+}
+
+/* Light mode — alternativo */
+body.light-mode header {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+}
+
+h1{
+    font-family: Roboto;
+    font-size: 40px;
+    font-weight: bolder;
+}
+
+/* Dark mode — predefinido */
+nav{
+    background-color: #181818;
+    text-align: center;
+    padding: 20px;
+    /* justify-content: space-between;  <- REMOVIDO (só funciona com display:flex) */
+}
+
+/* Light mode — alternativo */
+body.light-mode nav {
+    background-color: var(--cor-fundo);
+    text-align: center;
+    padding: 20px;
+    /* justify-content: space-between; */
+}
+
+.tema-toggle{
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Dark mode (predefinido) — mostra logo dark, esconde logo light */
+.logo-dark {
+    display: block;
+}
+
+.logo-light {
+    display: none;
+}
+
+/* Light mode — mostra logo light, esconde logo dark */
+body.light-mode .logo-dark {
+    display: none;
+}
+
+body.light-mode .logo-light {
+    display: block;
+}
+
+/* =========================================
+   Estilização do Dropdown (Hover e Bordas)
+   ========================================= */
+
+/* 1. Parent container holds the button and the menu */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* 2. Style the trigger button - usando a variável unificada */
+.dropbtn {
+  background-color: var(--cor-link); /* Usa a variável dinámica definida no início */
+  color: var(--cor-fundo);         /* Cor de texto contrastante */
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px; /* O botão principal tem 8px de border-radius */
+  transition: background-color 0.3s ease;
+}
+
+/* 3. Hide the menu by default and position it */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--cor-fundo); /* Fundo contrastante */
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 8px; /* O contentor também tem 8px de border-radius */
+  overflow: hidden;    /* Garante que os cantos dos links não saem fora */
+}
+
+/* 4. Style the links inside the dropdown - APENAS ESTILOS BÁSICOS AQUI */
+.dropdown-content a {
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  /* NÃO definir cor ou borda aqui para herdar corretamente no hover */
+  transition: all 0.3s ease;
+}
+
+/* 5. EFEITO DE HOVER NO BOTÃO PORTFOLIO (ABRIR O MENU) */
+/* Quando passamos o rato no .dropdown, mostramos o conteúdo */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Alterar o estilo do botão principal quando ativo */
+.dropdown:hover .dropbtn {
+  background-color: var(--cor-link-hover); /* Uma cor de hover para o azul */
+}
+
+/* 6. EFEITO PEDIDO: ESTILO DOS LINKS NO MOUSEHOVER */
+/* Quando passamos o rato nos links DENTRO do dropdown */
+.dropdown-content a:hover {
+    background-color: var(--cor-link); /* Fundo com a cor do botão Portfolio */
+    color: var(--cor-fundo);         /* Cor de texto contrastante */
+    border: 2px solid #e1e1e1;       /* Border idêntica à dos campos do formulário */
+    border-radius: 8px;              /* Border-radius idêntico ao do botão e campos */
+}
+
+button{
+    background-color: #47B5FF;
+    font-family: Roboto, sans-serif; /* Corrigido de 'Roboto Regular' */
+    font-size: 24px;
+    padding: 8px 8px;
+    border-radius: 8px;
+}
+
+a{
+    margin: 0px 15px;
+}
+
+main{
+    max-width: 100%;
+    margin: 0 auto;
+    flex: 1;
+}
+
+.btn-topo {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #47B5FF;
+    color: white;
+    padding: 15px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.btn-topo:hover {
+    background-color: #181818;
+}
+
+/* Dark mode — predefinido */
+.span-col1{
+    background-color: #181818;
+    min-width: 200px;
+    max-width: 100%;
+}
+
+/* Light mode — alternativo */
+body.light-mode .span-col1{
+    background-color: #DFF6FF;
+    min-width: 200px;
+    max-width: 100%;
+}
+
+.span-col1 img{
+  width: 10%;  
+  height: 30%;
+}
+
+.carousel-container {
+  position: relative;
+  max-width: 800px;
+  margin: 20px auto;
+  margin-top: 50px;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.carousel-track {
+  position: relative;
+  width: 100%;
+  height: 1000px;
+}
+
+.carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+  z-index: 1;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Navigation Buttons */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 16px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 50%;
+  transition: background 0.3s;
+  z-index: 10;
+}
+
+.carousel-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.prev-btn { left: 15px; }
+.next-btn { right: 15px; }
+
+.span-flex{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    background-color: #DFF6FF;
+    color: #181818;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+}
+
+.span-col{
+    flex: 1 1 30%;
+    min-width: 200px;
+}
+
+.span-col img{
+    width: auto;
+    height: auto;
+    max-width: 100%; /* Corrigido de 'none' para não quebrar o layout */
+}
+
+.span-col-coder{
+    flex: 1 1 30%;
+    min-width: 200px;
+}
+
+.secao-flex{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    background-color: #181818;
+    color: #DFF6FF;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+}
+
+body.light-mode .secao-flex{
+    background-color: #DFF6FF;
+    color: #181818;
+}
+
+.secao{
+    width: 100%;
+    padding: 60px 40px;
+    box-sizing: border-box;  /* garante que o padding não ultrapassa os 100% */
+}
+
+h3.secao{
+    text-align: left;
+    color: #47B5FF;
+}
+
+body.light-mode h3.secao{
+    color: #1363DF;
+}
+/* Cores individuais — Dark Mode (predefinido) */
+.secao-1 {
+    background-color: #181818;
+    color: #DFF6FF;
+}
+
+.secao-2 {
+    background-color: #181818;
+    color: #DFF6FF;
+}
+
+.secao-3 {
+    background-color: #181818;
+    color: #DFF6FF;
+}
+
+/* Cores individuais — Light Mode */
+body.light-mode .secao-1 {
+    background-color: #DFF6FF;
+    color: #181818;
+}
+
+body.light-mode .secao-2 {
+    background-color: #DFF6FF;
+    color: #181818;
+}
+
+body.light-mode .secao-3 {
+    background-color: #DFF6FF;
+    color: #181818;
+}
+
+section{
+    background-color: #47B5FF;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 15px 10px;
+}
+
+section img{
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+}
+
+/* Dark mode (predefinido) — mostra banner dark, esconde banner light */
+.banner-pattern {
+    display: block;
+}
+
+.banner-pattern-light {
+    display: none;
+}
+
+/* Light mode — mostra banner light, esconde banner dark */
+body.light-mode .banner-pattern {
+    display: none;
+}
+
+body.light-mode .banner-pattern-light {
+    display: block;
+}
+
+
+/* Dark mode — predefinido */
+section img.banner-pattern {
+    background-color: #181818;
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+}
+
+/* Light mode — alternativo */
+body.light-mode section img.banner-pattern-light {
+    background-color: #DFF6FF;
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+}
+
+.contact-row{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.contact-row p{
+    margin: 0;
+}
+
+.social-row{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.social-row img{
+    width: 32px;
+    height: 32px;
+}
+
+.contact-form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea{
+    font-family: Roboto;
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid #181818;
+    border-radius: 6px;
+}
+
+.contact-form textarea{
+    min-height: 150px;
+    resize: vertical;
+}
+
+.contact-form button{
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #181818;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    align-self: flex-start;
+}
+
+h3{
+    font-family: Roboto;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
+h3.titulo{
+    font-family: Roboto;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 50px;
+}
+
+p{
+  font-family: Roboto;
+  text-align: left;
+}
+
+.contexto{
+    padding: 50px 50px;
+    font-family: Roboto;
+    text-align: center;
+    line-height: 1.6;
+}
+
+/*Dark mode pré-definido*/
+.footer-flex{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    background-color: #181818;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+}
+
+/*Light mode — alternativo*/
+body.light-mode .footer-flex{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    background-color: #DFF6FF;
+    color: #181818;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+}
+
+.footer-col{
+    flex: 1 1 22%;
+    min-width: 150px;
+}
+
+/* Dark mode — predefinido */
+.footer-col a {
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 400;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.footer-col a:hover{
+    text-decoration: underline;
+}
+
+.footer-col a img {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.footer-col .logo-dark{
+    display: inline-block;
+}
+
+.footer-col .logo-light{
+    display: none;
+}
+
+body.light-mode .footer-col .logo-dark{
+    display: none;
+}
+
+body.light-mode .footer-col .logo-light{
+    display: inline-block;
+}
+
+/* Light mode — alternativo */
+body.light-mode .a{
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+/* Secção principal — duas colunas */
+.competencias {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    padding: 40px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+/* Coluna esquerda */
+.comp-texto {
+    flex: 1 1 40%;
+    min-width: 250px;
+    text-align: left;
+}
+
+/* Coluna direita */
+.comp-graficos {
+    flex: 1 1 50%;
+    min-width: 250px;
+}
+
+/* Cada linha de ferramenta */
+.ferramenta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+/* Logo da ferramenta */
+.tool-logo {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+/* Nome da ferramenta */
+.tool-nome {
+    min-width: 130px;
+    font-size: 14px;
+}
+
+/* Fundo cinzento da barra */
+.barra-fundo {
+    flex: 1;
+    background-color: #181818;
+    border-radius: 8px;
+    height: 14px;
+    overflow: hidden;
+}
+
+/* Light mode — fundo da barra */
+body.light-mode .barra-fundo {
+    background-color: #06283D;
+}
+
+/* Barra de progresso animada */
+.barra-progresso {
+    height: 100%;
+    width: 0%;                      /* começa em 0, JS anima até ao valor real */
+    background-color: #DFF6FF;
+    border-radius: 8px;
+    transition: width 1.2s ease-in-out;
+}
+
+/* Percentagem no fim */
+.tool-percentagem {
+    font-size: 13px;
+    min-width: 35px;
+    text-align: right;
+}
+
+/* =========================================
+   2. Estilização da Classe .regras
+   ========================================= */
+
+/* Estilos aplicados aos títulos h2 e h3 DENTRO da classe .regras */
+.regras h2,
+.regras h3 {
+    text-align: left; /* Alinha o texto à esquerda */
+    color: #1363DF;
+    font-family: 'Roboto', sans-serif; /* Aplica a fonte Roboto */
+    font-size: 30px;
+    
+    /* Outros estilos opcionais para títulos, se desejar */
+    /* margin-bottom: 15px; */
+}
+
+.regras h3{
+    font-size: 24px;
+    color:#47B5FF
+}
+
+/* Estilos aplicados aos links a href DENTRO da classe .regras */
+/* Estilo opcional para hover nos links */
+.regras a:hover {
+    text-decoration: underline;    /* Adiciona sublinhado ao passar o rato */
+}
+
+.desktop{
+    max-width: 1440px;
+    max-height: 3240px;
+}
+
+.mobile{
+    max-width: 390px;
+    max-height: 844px;
+}
+
+.cookie-banner{
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #06283D;
+    color: white;
+    padding: 20px;
+    z-index: 1000;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    box-sizing: border-box;
+}
+
+.cookie-banner p{
+    color: white;
+    margin: 0;
+    flex: 1 1 300px;
+}
+
+.cookie-banner a{
+    color: white;
+    text-decoration: underline;
+}
+
+.cookie-banner-buttons{
+    display: flex;
+    gap: 10px;
+    flex: 0 0 auto;
+}
+
+.cookie-btn{
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+}
+
+.cookie-btn-accept{
+    background-color: white;
+    color: #06283D;
+}
+
+.cookie-btn-decline{
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+}
+
+.scroll-down{
+    display: block;
+    width: 32px;
+    margin: 30px auto 0 auto;
+    animation: bounce 1.6s infinite;
+}
+
+.scroll-down img{
+    width: 100%;
+    height: auto;
+    transform: rotate(180deg);
+}
+
+@keyframes bounce{
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(10px);
+    }
+    60% {
+        transform: translateY(5px);
+    }
+}

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Designer</title>
+</head>
+<body id="topo">
+    <header>
+        <nav>
+            <img src="{{ url_for('static', filename='img/Dark-Mode-Wolf-Logo-64px.png') }}" alt="Logótipo Pedro Romano Multimédia" align="left" class="logo logo-dark">
+            <img src="{{ url_for('static', filename='img/Lupus-Media-Logo-64px.png') }}" alt="Logótipo Pedro Romano Multimédia" align="left" class="logo logo-light">
+            <button><a href="{{ url_for('pagina_home') }}">Home</a></button>
+            <button><a href="{{ url_for('pagina_sobre') }}">Sobre Mim</a></button>
+            <div class="dropdown">
+                <button class="drobtn"><a href="{{ url_for('pagina_portfolio') }}">Portfólio</a></button>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('pagina_coder') }}">Coder</a>
+                    <a href="{{ url_for('pagina_designer') }}">Designer</a>
+                </div>
+            </div>
+            <button><a href="{{ url_for('pagina_contratar') }}">Hire me</a></button>
+            <div class="tema-toggle">
+                <span>☀️ Light</span>
+                    <label class="switch">
+                        <input type="checkbox" id="tema-switch" onchange="toggleTema()">
+                        <span class="slider"></span>
+                <span>🌙 Dark</span>
+            </div>
+        </nav>
+    </header>
+    <h1>Página de Projectos de Design</h1>
+    <h2>Breve descrição do propósito desta página</h2>
+    <p class="contexto">Nesta página vou apresentar exemplos de vários projectos de design, que desenvolvi ao longo da minha formação enquanto Técnico de Multimédia.</p>
+    <main>
+        <a href="#top" class="btn-topo"><img src="{{ url_for('static', filename='img/up-arrow.png') }}" alt="Seta para cima"></a>
+        <section>
+            <h3>Projecto 1 - Moodboard em estilo minimalista </h3>
+                <a href="{{ url_for('pagina_moodboard') }}"><img src="{{ url_for('static', filename='img/Vexel_Media_Banner.png') }}" alt="Moodboard minimalista desenvolvido por Pedro Romano"></a>
+                <br>
+                <p>
+                    Neste projecto, foi-me pedido que criasse um Moodboard para uma empresa que tem um estilo minimalista e clean.<br> 
+                    Para esse efeito criei uns mockups para demonstrar como o logótipo ficaria nalguns produtos que a empresa poderia vender ou ter como <i>merchandising</i>.
+                </p>
+        </section>
+        <section>
+            <h3>Projecto 2 - Proposta de Redesign para uma marca</h3>
+                <a href="{{ url_for('pagina_fluxolabs') }}"><img src="{{ url_for('static', filename='img/Fluxo_Labs_Logo_Redesign_600x400px.png') }}" alt="Proposta de Redesign com BrandBoard desenvolvido por Pedro Romano"></a>
+                <br>
+                <p>
+                    Neste projecto, foi-me pedido que elaborasse uma proposta de redesign de uma empresa exemplo.<br>
+                    Primeiro redesenhei o logótipo de acordo com o briefing recebido, mantendo a identidade da empresa,         mas dando uma nova perspectiva, depois escolhi uma nova palete de cores, desenvolvi um padrão que demonstra como a palete funciona em conjunto e por fim desenvolvi alguns mockups para mostrar o novo logótipo na caixa do seu principal produto.
+                </p>
+        </section>
+        <section>
+            <h3>Projecto 3 - Exemplo de um brandboard para uma marca minha</h3>
+                <a href="{{ url_for('pagina_luminos') }}"><img src="{{ url_for('static', filename='img/Luminos_Banner_v2.jpg') }}" alt="Luminos Brandboard"></a>
+                <br>
+                <p>
+                    Neste projecto, desenvolvi um logótipo para uma marca minha, escolhi as tipografias principal e secundária,escolhi a palete de cores que iria representar essa marca e por fim criei uns mockups para demonstrar,
+                    como os logótipos poderão funcionar em diferentes produtos que poderão ser vendidos pela marca,          oferecidos como brinde a parceiros comerciais, ou disponibilizados como <i>merchandasing</i>.
+                </p>
+        </section>
+        <div id="cookie-banner" class="cookie-banner">
+            <p>Este site usa cookies para melhorar a sua experiência e para estatísticas de utilização. Saiba mais na <a href="{{ url_for('pagina_privacidade') }}">Política de Privacidade</a> e na <a href="{{ url_for('pagina_cookies') }}">Política de Cookies</a>.</p>
+            <div class="cookie-banner-buttons">
+                <button id="cookie-decline" class="cookie-btn cookie-btn-decline">Recusar</button>
+                <button id="cookie-accept" class="cookie-btn cookie-btn-accept">Aceitar</button>
+            </div>
+        </div>
+        <script src="{{ url_for('static', filename='js/cookie-consent.js') }}"></script>
+    </main>
+    <footer class="footer-flex">
+        <div class="footer-col">
+            <h3>Redes Sociais</h3>
+            <a href="https://x.com/pedro_romano">
+                <img src="{{ url_for('static', filename='img/logo-white-32px.png') }}" alt="Logo da Twitter Branco" class="logo logo-dark">
+                <img src="{{ url_for('static', filename='img/x_logo_black.png') }}" alt="Logo da Twitter Preto" class="logo logo-light">
+            </a>
+            <a href="https://www.linkedin.com/in/pedro-romano-a51442211/"><img src="{{ url_for('static', filename='img/LI-In-Bug32px.png') }}" alt="Logo da Linkdin"></a>
+            <a href="mailto:pedromanromano@gmail.com"><img src="{{ url_for('static', filename='img/Gmail_Logo_32px.png') }}" alt="Logo do Gmail"></a>
+            <a href="https://www.instagram.com/pedroromano80/"><img src="{{ url_for('static', filename='img/Instagram_Glyph_Gradient_32px.png') }}" alt="Logo do Instagram"></a>
+            <a href="https://www.facebook.com/pedromanromano"><img src="{{ url_for('static', filename='img/Facebook_Logo_Primary_32px.png') }}" alt="Logo do Facebook"></a>
+        </div>
+
+        
+        <div class="footer-col">
+            <h3>Informação Legal</h3>
+            <a href="{{ url_for('pagina_privacidade') }}">Política de Privacidade</a><br>
+            <a href="{{ url_for('pagina_cookies') }}">Política de Cookies</a><br>
+            <a href="{{ url_for('pagina_tcondicoes') }}">Termos e Condições</a><br>
+        </div>
+
+        <div class="footer-col">
+            <h3>Links Principais</h3>
+            <a href="{{ url_for('pagina_sobre') }}">Sobre Mim</a><br>
+            <a href="{{ url_for('pagina_portfolio') }}">Portfólio</a><br>
+            <a href="{{ url_for('pagina_contratar') }}">Contrate-me</a><br>
+            <a href="{{ url_for('pagina_coder') }}">Coder</a><br>
+            <a href="{{ url_for('pagina_designer') }}">Designer</a><br>
+            <a href="{{ url_for('pagina_contactos') }}">Contactos</a><br>
+        </div>
+
+        <div class="footer-col">
+            <h3>Contactos</h3>
+            <p>Morada: Porto</p>
+            <p>Telemóvel: +351917492359</p>
+            <p>Email: pedromanromano@gmail.com</p>
+        </div>
+
+        <p>
+            &copy;<span id="ano"></span> Desenvolvido por Pedro Romano
+        </p>
+
+    </footer>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

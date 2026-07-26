@@ -1,0 +1,255 @@
+/* style-form.css */
+
+/* 1. VARIÁVEIS DE COR E ESTILOS PADRÕES (LIGHT MODE - PREDEFINIDO) */
+:root {
+    /* Cores do tema Light */
+    --cor-fundo: #f4f7f6; /* Fundo suave da página */
+    --cor-fundo-card: #ffffff; /* Fundo branco do card do formulário */
+    --cor-texto: #333333;
+    --cor-texto-suave: #666666;
+    --cor-borda: #e1e1e1;
+    --cor-primaria: #007bff; /* Azul de destaque */
+    --cor-primaria-hover: #0056b3;
+    --cor-input-fundo: #ffffff;
+}
+
+/* 2. MEDIA QUERY PARA DETETAR DARK MODE DO DISPOSITIVO */
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* Cores do tema Dark */
+        --cor-fundo: #121212; /* Preto suave para o fundo */
+        --cor-fundo-card: #1e1e1e; /* Cinza escuro para o card */
+        --cor-texto: #e0e0e0;
+        --cor-texto-suave: #aaaaaa;
+        --cor-borda: #333333;
+        --cor-input-fundo: #2a2a2a;
+        /* Manter cores primárias ou ajustá-las para Dark Mode */
+    }
+}
+
+/* 3. CLASSES PARA FORÇAR TEMA (USADAS PELO JAVASCRIPT) */
+/* Se a classe .light-mode estiver no body, ignoramos a media query dark */
+body.light-mode {
+    --cor-fundo: #f4f7f6;
+    --cor-fundo-card: #ffffff;
+    --cor-texto: #333333;
+    --cor-texto-suave: #666666;
+    --cor-borda: #e1e1e1;
+    --cor-input-fundo: #ffffff;
+}
+
+/* Se a classe .dark-mode estiver no body, forçamos o Dark Mode */
+body.dark-mode {
+    --cor-fundo: #121212;
+    --cor-fundo-card: #1e1e1e;
+    --cor-texto: #e0e0e0;
+    --cor-texto-suave: #aaaaaa;
+    --cor-borda: #333333;
+    --cor-input-fundo: #2a2a2a;
+}
+
+/* 4. APLICAÇÃO DAS VARIÁVEIS NO ESTILO DO FORMULÁRIO */
+/* Configurações básicas para garantir que o estilo se aplica bem */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif; /* Alterado para Roboto */
+    margin: 0;
+    padding: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transição suave para troca de tema */
+}
+
+/* Separação da área do formulário do resto do body para garantir que o header e o footer ficam à largura total da página */
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 400px - 200px); /* Ajusta para preencher o ecrã sem causar scroll vertical */
+}
+
+/* Contentor principal do formulário */
+.form-container {
+    padding: 40px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 600px; /* Largura máxima para não ficar muito esticado em desktop */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Transição suave */
+}
+
+.form-container h2 {
+    margin-top: 0;
+    font-size: 28px;
+    text-align: center;
+}
+
+.form-container p {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+
+/* Espaçamento entre cada campo */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Estilo dos rótulos (labels) */
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* Estilo comum para inputs, select e textarea */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease; /* Transição suave */
+    
+    /* --- COMPATIBILIDADE --- */
+    -webkit-appearance: none;  /* Para Safari e Chrome antigos */
+    -moz-appearance: none;     /* Para Firefox antigo */
+    appearance: none;          /* Propriedade padrão moderna */
+    /* ------------------------ */
+}
+
+/* Efeito ao clicar/focar no campo */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #47B5FF; /* Cor de destaque (azul claro do botão) */
+}
+
+/* Estilo específico para o select para adicionar uma seta customizada */
+.form-group select {
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 15px top 50%;
+    background-size: 12px auto;
+    padding-right: 40px;
+}
+
+/* Impede que o utilizador redimensione o textarea horizontalmente */
+.form-group textarea {
+    resize: vertical;
+}
+
+/* Estilo do botão enviar */
+.form-group button {
+    width: 100%;
+    padding: 15px;
+    background-color: #47B5FF; /* Cor base do botão */
+    color: #181818;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    font-family: 'Roboto', sans-serif; /* Garante que o botão também usa Roboto */
+}
+
+/* Efeito de hover no botão */
+.form-group button:hover {
+    background-color: #1363DF; /* Cor de hover do botão */
+    color: #DFF6FF;
+}
+
+/* Efeito de clique no botão */
+.form-group button:active {
+    transform: scale(0.98);
+}
+
+/* =========================================
+   OPÇÕES DE TEMA (DARK E LIGHT MODE)
+   ========================================= */
+
+/* --- DARK MODE (Ativado com classe .dark-mode no body) --- */
+body.dark-mode {
+    background-color: #181818; /* Cor de fundo Dark Mode */
+    color: #ffffff; /* Cor das letras Dark Mode (Branco) */
+}
+
+body.dark-mode .form-container {
+    background-color: #2a2a2a; /* Um cinza ligeiramente mais claro para o contentor no modo escuro */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2); /* Sombra mais forte no modo escuro */
+}
+
+body.dark-mode h2,
+body.dark-mode p,
+body.dark-mode label {
+    color: #ffffff; /* Garante texto branco nos elementos secundários */
+}
+
+body.dark-mode .form-container p {
+    color: #cccccc; /* Texto descritivo ligeiramente mais suave */
+}
+
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode textarea {
+    background-color: #3a3a3a; /* Fundo dos campos escuro */
+    color: #ffffff; /* Texto dos campos branco */
+    border: 2px solid #555555; /* Borda dos campos escura */
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+    color: #aaaaaa; /* Cor do placeholder no modo escuro */
+}
+
+/* --- LIGHT MODE (Ativado com classe .light-mode no body ou como padrão) --- */
+/* Estas regras aplicam-se quando a classe .light-mode está no body ou se nenhuma classe de tema estiver definida, 
+   assumindo que as cores originais eram próximas do Light Mode. Vamos forçar os valores pedidos. */
+body.light-mode {
+    background-color: #DFF6FF; /* Cor de fundo Light Mode */
+    color: #181818; /* Cor das letras Light Mode */
+}
+
+body.light-mode .form-container {
+    background-color: #ffffff; /* Contentor branco no modo claro */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05); /* Sombra suave padrão */
+}
+
+body.light-mode h2,
+body.light-mode p,
+body.light-mode label {
+    color: #181818; /* Garante texto escuro nos elementos secundários */
+}
+
+body.light-mode .form-container p {
+    color: #555555; /* Texto descritivo ligeiramente mais suave */
+}
+
+body.light-mode input,
+body.light-mode select,
+body.light-mode textarea {
+    background-color: #ffffff; /* Fundo dos campos branco */
+    color: #181818; /* Texto dos campos escuro */
+    border: 2px solid #e1e1e1; /* Borda dos campos padrão */
+}
+
+body.light-mode input::placeholder,
+body.light-mode textarea::placeholder {
+    color: #888888; /* Cor do placeholder no modo claro */
+}
+
+/* Responsividade para ecrãs muito pequenos (telemóveis antigos) */
+@media (max-width: 480px) {
+    .form-container {
+        padding: 20px;
+    }
+    
+    .form-container h2 {
+        font-size: 22px;
+    }
+}
